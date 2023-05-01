@@ -33,7 +33,7 @@ deliveryClient
         'p',
         'article-title',
         'innerText',
-        item.elements.start_date.value
+        new Date(item.elements.start_date.value)
       );      
 
       const venue = createElement(
@@ -41,7 +41,7 @@ deliveryClient
         'article-title',
         'innerText',
         item.elements.venue.linkedItems[0].elements.venue_name.value
-      );      
+      );
 
       // Add nodes to DOM
       articleList.appendChild(card);

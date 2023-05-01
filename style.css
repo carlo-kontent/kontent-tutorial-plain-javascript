@@ -9,7 +9,7 @@ body {
 }
 
 body a {
-  color: rgb(219, 60, 0);
+  color: #3dcca8;
 }
 
 #app {
@@ -31,10 +31,11 @@ body a {
 
 #app-header {
   margin-bottom: 24px;
-  background-color: rgb(219, 60, 0);
+  background-color: #3dcca8;
   padding: 12px 24px;
   color: #ffffff;
   line-height: 50px;
+  text-align: center;
 }
 
 #app-header .github-link img {
