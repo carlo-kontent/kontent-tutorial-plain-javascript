@@ -53,6 +53,7 @@ deliveryClient
       'src',
       transformedImageUrl
     );
+    
     const title = createElement(
       'h2',
       'article-title',
