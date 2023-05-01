@@ -56,10 +56,10 @@ body a {
 }
 
 .card {
-  padding: 24px 32px;
   border: solid 1px #e6e6e6;
   border-radius: 25px;
   background: white;
+  padding: 24px 32px;
 }
 
 .card-no-link-style a {

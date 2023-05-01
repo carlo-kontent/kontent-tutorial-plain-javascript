@@ -12,7 +12,8 @@ const addToElementbyId = (elementType, id, parent) => {
 // Set up Kontent delivery
 const Kk = window['kontentDelivery'];
 const deliveryClient = new Kk.createDeliveryClient({
-  projectId: '975bf280-fd91-488c-994c-2f04416e5ee3'
+  // projectId: 'a5a0d173-7f3b-0025-b24d-3b3c578b0051'
+  projectId: 'ba368ef4-c1b0-022e-1dbb-673e3cd76b71'
 });
 
 // Function for adding elements to DOM with specific attributes
