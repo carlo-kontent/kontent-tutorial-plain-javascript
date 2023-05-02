@@ -17,17 +17,17 @@ deliveryClient
       card.classList.add('conference');
       const link = createElement(
         'a',
-        'link',
+        'button',
         'href',
         './location.html#' + item.elements.location_url.value
       );
 
-      const register = createElement(
-        'a',
-        'link',
-        'href',
-        './register.html#' + item.elements.location_url.value
-      );
+      // const register = createElement(
+      //   'a',
+      //   'link',
+      //   'href',
+      //   './register.html#' + item.elements.location_url.value
+      // );
 
       const title = createElement(
         'h2',
@@ -50,16 +50,16 @@ deliveryClient
         'Venue: ' + item.elements.venue.linkedItems[0].elements.venue_name.value
       );
 
-      const linkAgenda = document.createTextNode("View Agenda");
-      const linkRegister = document.createTextNode("Register Now (coming soon)");
+      const linkAgenda = document.createTextNode("View Event");
+      // const linkRegister = document.createTextNode("Register Now (coming soon)");
 
       // Add nodes to DOM
       articleList.appendChild(card);
       // card.appendChild(link);
       // link.append(title, startDate, venue, conferenceCTA);
       link.appendChild(linkAgenda);
-      register.appendChild(linkRegister);
-      card.append(title, startDate, venue, link, register);
+      // register.appendChild(linkRegister);
+      card.append(title, startDate, venue, link);
     });
   })
   .catch(err => {

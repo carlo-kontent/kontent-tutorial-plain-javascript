@@ -68,22 +68,28 @@ body a {
   padding: 24px 32px;
 }
 
-.card-no-link-style a {
+.card-no-link-style a,
+.card--fullwidth a:not(.button, .speaker-link)  {
   color: inherit;
   text-decoration: none;
 }
 
-.conference .link {
+.card.card--fullwidth {
+  flex: 1 1 calc((100% / 2));
+}
+
+.button {
   text-decoration: none;
   color: #3dcca8;
   padding: 10px 20px;
-  margin: 10px 20px;
+  margin: 10px 0;
   display: inline-block;
   transition-duration: 0.5s;
   border-radius: 5px;
+  border: 2px solid #3dcca8;
 }
 
-.conference .link:hover {
+.button:hover {
   background: #3dcca8;
   color: #fff;
 }
@@ -93,7 +99,7 @@ body a {
 }
 
 .card img {
-  width: 100%;
+  /* width: 100%; */
 }
 
 @media screen and (min-width: 700px) {
@@ -116,4 +122,44 @@ body a {
 
 .article-teaser {
   width: 100%;
+}
+
+.agenda-teaser,
+.avatar {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  margin-top: 40px;
+}
+
+.card--header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.article-description {
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.card--speaker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.job-title {
+  margin-left: 10px;
+}
+
+
+.speaker-link {
+  margin-left: 10px;
+  color: #3dcca8;
 }
