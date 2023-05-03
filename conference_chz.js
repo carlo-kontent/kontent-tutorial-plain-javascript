@@ -5,6 +5,7 @@ const articleList = addToElementbyId('div', 'article-list', app);
 deliveryClient
   .items()
   .type('conference')
+  .languageParameter('czech')
   .toPromise()
   .then((response) => {
     // Print data

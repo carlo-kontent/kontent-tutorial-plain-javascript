@@ -81,7 +81,7 @@ const renderHash = () => {
           return { linkUrl: urlLocation };
         },
         contentItemResolver: (itemId, item) => {
-          if (item.system.type === 'hosted_video') {
+          if (item.system.type === 'hosted_video') {    
             const videoID = item.elements.video_id.value;
   
             // Check if a video host exists
