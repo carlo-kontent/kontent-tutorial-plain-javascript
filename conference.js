@@ -5,6 +5,7 @@ const articleList = addToElementbyId('div', 'article-list', app);
 deliveryClient
   .items()
   .type('conference')
+  .depthParameter(2)
   .toPromise()
   .then((response) => {
     // Print data
@@ -39,6 +40,7 @@ deliveryClient
 deliveryClient
   .items()
   .type('event')
+  .depthParameter(2)
   .toPromise()
   .then((response) => {
     // Print data

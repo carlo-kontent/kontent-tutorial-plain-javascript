@@ -12,7 +12,6 @@ const addToElementbyId = (elementType, id, parent) => {
 // Set up Kontent delivery
 const Kk = window['kontentDelivery'];
 const deliveryClient = new Kk.createDeliveryClient({
-  // projectId: 'a5a0d173-7f3b-0025-b24d-3b3c578b0051'
   environmentId: 'ba368ef4-c1b0-022e-1dbb-673e3cd76b71',
 
   previewApiKey:

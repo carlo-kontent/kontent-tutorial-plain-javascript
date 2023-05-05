@@ -15,19 +15,22 @@ deliveryClient
   .items()
   .type('presentation_details')
   .equalsFilter('elements.url_pattern', articleSlug)
+  .depthParameter(2)
   .queryConfig({
     urlSlugResolver: (link, context) => {
       return resolveUrl(link);
     },
     richTextResolver: (item, context) => {
       return resolveLinkedItems(item);
-    }
+    },
   })
   .toPromise()
-  .then(response => {
+  .then((response) => {
     // Check if article found before adding
     const article =
-      response.data.items && response.data.items.length ? response.data.items[0] : undefined;
+      response.data.items && response.data.items.length
+        ? response.data.items[0]
+        : undefined;
 
     // 404 message if not found
     if (!article) {
@@ -38,8 +41,11 @@ deliveryClient
     // Update title
     document.title = `Article | ${article.system.name}`;
 
-    // Transform image 
-    const transformedImageUrl = Kk.transformImageUrl(article.elements.presentation_body.linkedItems[0].elements.hero_asset.value[0].url)
+    // Transform image
+    const transformedImageUrl = Kk.transformImageUrl(
+      article.elements.presentation_body.linkedItems[0].elements.hero_asset
+        .value[0].url
+    )
       .withDpr(2)
       .withCompression('lossless')
       .withHeight(300)
@@ -60,21 +66,24 @@ deliveryClient
       article.elements.presentation_body.linkedItems[0].elements.title.value
     );
 
-    console.log(article)
+    console.log(article);
 
-    const richTextElement = article.elements.presentation_body.linkedItems[0].elements.summary;
+    const richTextElement =
+      article.elements.presentation_body.linkedItems[0].elements.summary;
 
     const rteResolver = Kk.createRichTextHtmlResolver().resolveRichText({
       element: richTextElement,
-      linkedItems: Kk.linkedItemsHelper.convertLinkedItemsToArray(response.data.linkedItems),
+      linkedItems: Kk.linkedItemsHelper.convertLinkedItemsToArray(
+        response.data.linkedItems
+      ),
       urlResolver: (linkId, linkText, link) => {
         // Set link based on type
         const urlLocation =
           link.type === 'article'
             ? `article.html#${link.urlSlug}`
             : link.type === 'coffee'
-              ? `coffee.html#${link.urlSlug}`
-              : 'unsupported-link';
+            ? `coffee.html#${link.urlSlug}`
+            : 'unsupported-link';
         return { linkUrl: urlLocation };
       },
       contentItemResolver: (itemId, item) => {
@@ -83,25 +92,26 @@ deliveryClient
 
           // Check if a video host exists
           const videoHost =
-            item.elements.video_host.value && item.elements.video_host.value.length
+            item.elements.video_host.value &&
+            item.elements.video_host.value.length
               ? item.elements.video_host.value[0].codename
               : undefined;
           if (videoHost) {
             // Return based on hosting provider
-            const htmlCode = videoHost === 'youtube'
-              ? `<iframe src='https://www.youtube.com/embed/${videoID}' width='560' height='315' frameborder='0'></iframe>`
-              : `<iframe src='https://player.vimeo.com/video/${videoID}' width='560' height='315' allowfullscreen frameborder='0'></iframe>`;
+            const htmlCode =
+              videoHost === 'youtube'
+                ? `<iframe src='https://www.youtube.com/embed/${videoID}' width='560' height='315' frameborder='0'></iframe>`
+                : `<iframe src='https://player.vimeo.com/video/${videoID}' width='560' height='315' allowfullscreen frameborder='0'></iframe>`;
 
             return {
-              contentItemHtml: htmlCode
+              contentItemHtml: htmlCode,
             };
-
           }
         }
         return {
-          contentItemHtml: ''
+          contentItemHtml: '',
         };
-      }
+      },
     });
 
     const body = createElement(
@@ -116,6 +126,6 @@ deliveryClient
     articleContainer.append(headerImage, title, body);
     return;
   })
-  .catch(err => {
+  .catch((err) => {
     reportErrors(err);
   });
