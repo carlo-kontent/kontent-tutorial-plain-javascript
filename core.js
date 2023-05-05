@@ -46,3 +46,11 @@ const reportErrors = (err) => {
   console.error(err);
   app.innerHTML = `<p>An error occured 😞:</p><p><i>${err}</i></p>`;
 };
+
+KontentSmartLink.initialize({
+  defaultDataAttributes: {
+    projectId: 'ba368ef4-c1b0-022e-1dbb-673e3cd76b71',
+    languageCodename: 'English',
+  },
+  queryParam: null,
+});

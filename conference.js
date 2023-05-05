@@ -10,6 +10,11 @@ deliveryClient
     // Print data
     console.log(response);
 
+    articleList.dataset.kontentItemId = '9e9ee86a-9e08-4be7-b7a2-80de431c3620';
+    articleList.dataset.kontentElementCodename = 'content';
+
+    console.log(articleList.dataset.kontentElementId);
+
     const pageTitle = createElement(
       'h1',
       '',
