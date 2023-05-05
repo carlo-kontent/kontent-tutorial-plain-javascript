@@ -186,3 +186,17 @@ p {
 .lang a {
   color: #fff;
 }
+
+#article-width {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-inline {
+  max-width: 500px;
+  display: flex;
+  margin: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}

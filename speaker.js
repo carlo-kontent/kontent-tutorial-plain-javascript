@@ -8,7 +8,7 @@ window.addEventListener('hashchange', renderHash, false);
 const articleSlug = location.hash.slice(1);
 
 // Create article container
-const articleContainer = addToElementbyId('div', 'article', app);
+const articleContainer = addToElementbyId('div', 'article-width', app);
 
 // Call for article info
 deliveryClient

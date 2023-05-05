@@ -8,7 +8,7 @@ window.addEventListener('hashchange', renderHash, false);
 const articleSlug = location.hash.slice(1);
 
 // Create article container
-const articleContainer = addToElementbyId('div', 'article', app);
+const articleContainer = addToElementbyId('div', 'article-width', app);
 
 // Call for article info
 deliveryClient
@@ -74,7 +74,8 @@ deliveryClient
     const rteResolver = Kk.createRichTextHtmlResolver().resolveRichText({
       element: richTextElement,
       linkedItems: Kk.linkedItemsHelper.convertLinkedItemsToArray(
-        response.data.linkedItems
+        article.elements.presentation_body.linkedItems[0].elements.summary
+          .linkedItems
       ),
       urlResolver: (linkId, linkText, link) => {
         // Set link based on type
@@ -86,31 +87,15 @@ deliveryClient
             : 'unsupported-link';
         return { linkUrl: urlLocation };
       },
-      contentItemResolver: (itemId, item) => {
-        if (item.system.type === 'hosted_video') {
-          const videoID = item.elements.video_id.value;
-
-          // Check if a video host exists
-          const videoHost =
-            item.elements.video_host.value &&
-            item.elements.video_host.value.length
-              ? item.elements.video_host.value[0].codename
-              : undefined;
-          if (videoHost) {
-            // Return based on hosting provider
-            const htmlCode =
-              videoHost === 'youtube'
-                ? `<iframe src='https://www.youtube.com/embed/${videoID}' width='560' height='315' frameborder='0'></iframe>`
-                : `<iframe src='https://player.vimeo.com/video/${videoID}' width='560' height='315' allowfullscreen frameborder='0'></iframe>`;
-
-            return {
-              contentItemHtml: htmlCode,
-            };
-          }
+      contentItemResolver: (item) => {
+        if (
+          article.elements.presentation_body.linkedItems[0].elements.summary
+            .linkedItems[0].system.type === 'image'
+        ) {
+          return {
+            contentItemHtml: `<img class="img-inline" src="${article.elements.presentation_body.linkedItems[0].elements.summary.linkedItems[0].elements.asset.value[0].url}" />`,
+          };
         }
-        return {
-          contentItemHtml: '',
-        };
       },
     });
 
