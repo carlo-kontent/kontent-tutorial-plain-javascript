@@ -1,16 +1,59 @@
 // Add list container to app
 const header = addToElementbyId('header', 'app-header', app);
 const articleList = addToElementbyId('div', 'article-list', app);
+const footer = addToElementbyId('div', 'app-footer', app);
+
+// deliveryClient
+//   .items('')
+//   .type('web_spotlight_root')
+//   .depthParameter(2)
+//   .toPromise()
+//   .then((menu) => {
+//     // console.log(menu);
+
+//     const navMainItems =
+//       menu.data.items[0].elements.subpages.linkedItems[0].elements.subpages
+//         .linkedItems;
+
+//     // console.log(navMainItems);
+
+//     const navMainUl = createElement('ul', 'nav-main', 'innerText', '');
+
+//     navMainItems.forEach(buildNav);
+
+//     function buildNav(el) {
+//       console.log(el);
+//       itemLi = createElement('il', 'nav-item', 'innerText', '');
+//       itemLink = createElement('a', 'nav-link', 'href', el.elements.url.value);
+
+//       itemLi.append(itemLink);
+
+//       // console.log(itemLi);
+
+//       const navLinkText = document.createTextNode(el.elements.title.value);
+
+//       // console.log(item.elements.title.value);
+//       itemLink.append(navLinkText);
+//       navMainUl.append(itemLink);
+//     }
+
+//     header.append(navMainUl);
+//   });
 
 deliveryClient
   .items()
   .type('conference')
-  .depthParameter(2)
   .languageParameter('czech')
+  .depthParameter(2)
   .toPromise()
   .then((response) => {
     // Print data
-    console.log(response);
+    // console.log(response);
+
+    articleList.dataset.kontentItemId = '9e9ee86a-9e08-4be7-b7a2-80de431c3620';
+    articleList.dataset.kontentElementCodename = 'content';
+
+    // console.log(articleList.dataset.kontentElementId);
 
     const pageTitle = createElement(
       'h1',
@@ -26,7 +69,45 @@ deliveryClient
       response.data.items[0].elements.summary__auto_generated__tbc__content
         .value
     );
-    header.append(pageTitle, headerSummary);
+
+    const sponsorTitle = createElement('h3', '', 'innerText', 'Our Sponsors');
+
+    const conferenceImg = createElement(
+      'img',
+      'sponsor-logo',
+      'src',
+      response.data.items[0].elements.conference_logo.linkedItems[0].elements
+        .asset.value[0].url
+    );
+
+    const sponsorImg = createElement(
+      'img',
+      'sponsor-logo',
+      'src',
+      response.data.items[0].elements.conference_sponsors.linkedItems[0]
+        .elements.sponsor_logo.value[0].url
+    );
+
+    const sponsorsName = document.createTextNode(
+      response.data.items[0].elements.conference_sponsors.linkedItems[0]
+        .elements.name.value
+    );
+
+    const sponsorsLink = createElement(
+      'a',
+      'sponsor-link',
+      'href',
+      'http://' +
+        response.data.items[0].elements.conference_sponsors.linkedItems[0]
+          .elements.name.value
+    );
+
+    sponsorsLink.appendChild(sponsorsName);
+
+    header.append(conferenceImg, pageTitle, headerSummary);
+
+    footer.append(sponsorTitle, sponsorsLink);
+    sponsorsLink.append(sponsorImg, sponsorsName);
   })
   .catch((err) => {
     reportErrors(err);
@@ -36,10 +117,11 @@ deliveryClient
 deliveryClient
   .items()
   .type('event')
+  .depthParameter(2)
   .toPromise()
   .then((response) => {
     // Print data
-    console.log(response);
+    // console.log(response);
 
     response.data.items.forEach((item) => {
       // Create nodes
@@ -74,13 +156,15 @@ deliveryClient
       );
 
       const venue = createElement(
-        'p',
-        'article-title',
-        'innerText',
-        'Venue: ' + item.elements.venue.linkedItems[0].elements.venue_name.value
+        'a',
+        'button',
+        'href',
+        './venue.html#' +
+          item.elements.venue.linkedItems[0].elements.venue_url_slug.value
       );
 
-      const linkAgenda = document.createTextNode('View Event');
+      const linkAgenda = document.createTextNode('View Agenda');
+      const linkVenue = document.createTextNode('Venue Info');
       // const linkRegister = document.createTextNode("Register Now (coming soon)");
 
       // Add nodes to DOM
@@ -88,8 +172,9 @@ deliveryClient
       // card.appendChild(link);
       // link.append(title, startDate, venue, conferenceCTA);
       link.appendChild(linkAgenda);
+      venue.appendChild(linkVenue);
       // register.appendChild(linkRegister);
-      card.append(title, startDate, venue, link);
+      card.append(title, startDate, link, venue);
     });
   })
   .catch((err) => {

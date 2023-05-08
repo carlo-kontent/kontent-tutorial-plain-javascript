@@ -26,7 +26,7 @@ deliveryClient
   })
   .toPromise()
   .then((response) => {
-    // console.log(response)
+    console.log(response);
 
     // Check if article found before adding
     const article =

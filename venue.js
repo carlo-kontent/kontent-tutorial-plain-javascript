@@ -94,9 +94,27 @@ deliveryClient
       article.elements.summary__auto_generated__tbc__content.value
     );
 
+    const venueUrl = createElement(
+      'a',
+      'link',
+      'href',
+      article.elements.venue_url.value
+    );
+
+    venueLinkText = document.createTextNode('Visit the venue website');
+
+    venueUrl.appendChild(venueLinkText);
+
     // Add nodes to DOM
     articleContainer.classList.add('card');
-    articleContainer.append(headerImage, title, address, room, summary);
+    articleContainer.append(
+      headerImage,
+      title,
+      address,
+      room,
+      summary,
+      venueUrl
+    );
     return;
   })
   .catch((err) => {
