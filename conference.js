@@ -52,8 +52,6 @@ deliveryClient
     articleList.dataset.kontentItemId = '9e9ee86a-9e08-4be7-b7a2-80de431c3620';
     articleList.dataset.kontentElementCodename = 'content';
 
-    // console.log(articleList.dataset.kontentElementId);
-
     const pageTitle = createElement(
       'h1',
       '',
@@ -133,13 +131,6 @@ deliveryClient
         './location.html#' + item.elements.location_url.value
       );
 
-      // const register = createElement(
-      //   'a',
-      //   'link',
-      //   'href',
-      //   './register.html#' + item.elements.location_url.value
-      // );
-
       const title = createElement(
         'h2',
         'article-title',
@@ -164,15 +155,11 @@ deliveryClient
 
       const linkAgenda = document.createTextNode('View Agenda');
       const linkVenue = document.createTextNode('Venue Info');
-      // const linkRegister = document.createTextNode("Register Now (coming soon)");
 
       // Add nodes to DOM
       articleList.appendChild(card);
-      // card.appendChild(link);
-      // link.append(title, startDate, venue, conferenceCTA);
       link.appendChild(linkAgenda);
       venue.appendChild(linkVenue);
-      // register.appendChild(linkRegister);
       card.append(title, startDate, link, venue);
     });
   })

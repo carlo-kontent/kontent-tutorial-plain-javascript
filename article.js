@@ -59,6 +59,7 @@ deliveryClient
       'src',
       transformedImageUrl
     );
+
     const title = createElement(
       'h2',
       'article-title',
@@ -66,8 +67,9 @@ deliveryClient
       article.elements.presentation_body.linkedItems[0].elements.title.value
     );
 
-    console.log(article);
+    // console.log(article);
 
+    // RTE Resolver
     const richTextElement =
       article.elements.presentation_body.linkedItems[0].elements.summary;
 

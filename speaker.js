@@ -67,8 +67,6 @@ deliveryClient
       article.elements.fullname.value
     );
 
-    // console.log(article.elements.summary.value)
-
     const richTextElement = article.elements.summary;
 
     const rteResolver = Kk.createRichTextHtmlResolver().resolveRichText({

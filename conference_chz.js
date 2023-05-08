@@ -3,43 +3,6 @@ const header = addToElementbyId('header', 'app-header', app);
 const articleList = addToElementbyId('div', 'article-list', app);
 const footer = addToElementbyId('div', 'app-footer', app);
 
-// deliveryClient
-//   .items('')
-//   .type('web_spotlight_root')
-//   .depthParameter(2)
-//   .toPromise()
-//   .then((menu) => {
-//     // console.log(menu);
-
-//     const navMainItems =
-//       menu.data.items[0].elements.subpages.linkedItems[0].elements.subpages
-//         .linkedItems;
-
-//     // console.log(navMainItems);
-
-//     const navMainUl = createElement('ul', 'nav-main', 'innerText', '');
-
-//     navMainItems.forEach(buildNav);
-
-//     function buildNav(el) {
-//       console.log(el);
-//       itemLi = createElement('il', 'nav-item', 'innerText', '');
-//       itemLink = createElement('a', 'nav-link', 'href', el.elements.url.value);
-
-//       itemLi.append(itemLink);
-
-//       // console.log(itemLi);
-
-//       const navLinkText = document.createTextNode(el.elements.title.value);
-
-//       // console.log(item.elements.title.value);
-//       itemLink.append(navLinkText);
-//       navMainUl.append(itemLink);
-//     }
-
-//     header.append(navMainUl);
-//   });
-
 deliveryClient
   .items()
   .type('conference')
@@ -134,13 +97,6 @@ deliveryClient
         './location.html#' + item.elements.location_url.value
       );
 
-      // const register = createElement(
-      //   'a',
-      //   'link',
-      //   'href',
-      //   './register.html#' + item.elements.location_url.value
-      // );
-
       const title = createElement(
         'h2',
         'article-title',
@@ -165,15 +121,11 @@ deliveryClient
 
       const linkAgenda = document.createTextNode('View Agenda');
       const linkVenue = document.createTextNode('Venue Info');
-      // const linkRegister = document.createTextNode("Register Now (coming soon)");
 
       // Add nodes to DOM
       articleList.appendChild(card);
-      // card.appendChild(link);
-      // link.append(title, startDate, venue, conferenceCTA);
       link.appendChild(linkAgenda);
       venue.appendChild(linkVenue);
-      // register.appendChild(linkRegister);
       card.append(title, startDate, link, venue);
     });
   })
