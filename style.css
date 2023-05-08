@@ -64,6 +64,7 @@ body a {
   border-radius: 25px;
   background: white;
   padding: 24px 32px;
+  margin-bottom: 20px;
 }
 
 .card-no-link-style a,
