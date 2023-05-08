@@ -81,11 +81,12 @@ body a {
   text-decoration: none;
   color: #3dcca8;
   padding: 10px 20px;
-  margin: 10px 0;
-  display: inline-block;
+  margin: 20px 0;
   transition-duration: 0.5s;
   border-radius: 5px;
   border: 2px solid #3dcca8;
+  display: flex;
+  justify-content: center;
 }
 
 .button:hover {

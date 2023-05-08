@@ -9,12 +9,12 @@ deliveryClient
   .toPromise()
   .then((response) => {
     // Print data
-    console.log(response);
+    // console.log(response);
 
     articleList.dataset.kontentItemId = '9e9ee86a-9e08-4be7-b7a2-80de431c3620';
     articleList.dataset.kontentElementCodename = 'content';
 
-    console.log(articleList.dataset.kontentElementId);
+    // console.log(articleList.dataset.kontentElementId);
 
     const pageTitle = createElement(
       'h1',
@@ -79,13 +79,15 @@ deliveryClient
       );
 
       const venue = createElement(
-        'p',
-        'article-title',
-        'innerText',
-        'Venue: ' + item.elements.venue.linkedItems[0].elements.venue_name.value
+        'a',
+        'button',
+        'href',
+        './venue.html#' +
+          item.elements.venue.linkedItems[0].elements.venue_url_slug.value
       );
 
-      const linkAgenda = document.createTextNode('View Event');
+      const linkAgenda = document.createTextNode('View Agenda');
+      const linkVenue = document.createTextNode('Venue Info');
       // const linkRegister = document.createTextNode("Register Now (coming soon)");
 
       // Add nodes to DOM
@@ -93,8 +95,9 @@ deliveryClient
       // card.appendChild(link);
       // link.append(title, startDate, venue, conferenceCTA);
       link.appendChild(linkAgenda);
+      venue.appendChild(linkVenue);
       // register.appendChild(linkRegister);
-      card.append(title, startDate, venue, link);
+      card.append(title, startDate, link, venue);
     });
   })
   .catch((err) => {
