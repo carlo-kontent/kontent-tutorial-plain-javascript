@@ -49,6 +49,10 @@ deliveryClient
     // Print data
     // console.log(response);
 
+    header.dataset.kontentItemId = '06568d98-f789-4c8c-a7b5-b47cd2204db5';
+    header.dataset.kontentElementCodename = 'name';
+    header.dataset.kontentElementCodename = 'conference_logo';
+
     articleList.dataset.kontentItemId = '9e9ee86a-9e08-4be7-b7a2-80de431c3620';
     articleList.dataset.kontentElementCodename = 'content';
 
