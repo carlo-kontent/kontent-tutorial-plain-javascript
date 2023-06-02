@@ -1,5 +1,7 @@
 # Kentico Kontent plain JavaScript tutorial
 
+[Kontent.ai plain JavaScript tutorial](https://kontent.ai/learn/tutorials/develop-apps/get-started/build-your-first-app/?tech=javascript)
+
 [Original Kontent,ai repo](https://github.com/Kontent-ai-Learn/kontent-tutorial-plain-javascript/)
 
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico.github.io/kontent-tutorial-plain-javascript)
