@@ -1,5 +1,7 @@
 # Kentico Kontent plain JavaScript tutorial
 
+[Original Kontent,ai repo](https://github.com/Kontent-ai-Learn/kontent-tutorial-plain-javascript/)
+
 [![Live Demo](https://img.shields.io/badge/live-demo-brightgreen.svg)](https://kentico.github.io/kontent-tutorial-plain-javascript)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
